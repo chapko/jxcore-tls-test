@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eu
+
+JX_CORDOVA_VERSION="0.1.10"
+JX_CORDOVA_URL="http://jxcore.azureedge.net/jxcore-cordova/0.1.10/release/io.jxcore.node.jx"
+
+mkdir -p temp/node_modules
+(
+    cd temp
+    npm i jxc
+)
+
+jx temp/node_modules/jxc/bin/jxc.bin.js install "$JX_CORDOVA_VERSION" \
+    --use-url "$JX_CORDOVA_URL"
+
+rm -rf temp
